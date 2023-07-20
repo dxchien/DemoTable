@@ -2,6 +2,7 @@ build
 dist
 .DS_Store
 .idea
+.angular
 sassdoc
 
 #src/assets/theme/*.css
