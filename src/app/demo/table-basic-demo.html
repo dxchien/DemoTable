@@ -8,16 +8,20 @@
         <th>active</th>
         <th>ack</th>
         <th>cleared</th>
+        <th>eventdate</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-event>
       <tr>
-        <td>{{ event.severity }}</td>
+        <td>
+          <p-tag severity="{{decodeSeverity(event.severity)}}" value="{{ event.severity }}"></p-tag>
+        </td>
         <td>{{ event.problem }}</td>
         <td>{{ event.source }}</td>
         <td>{{ event.active }}</td>
         <td>{{ event.ack }}</td>
         <td>{{ event.cleared }}</td>
+        <td>{{ event.eventdate }}</td>
       </tr>
     </ng-template>
   </p-table>
