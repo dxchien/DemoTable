@@ -1,19 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../domain/product';
-import { ProductService } from '../../service/productservice';
 
 @Component({
-    selector: 'table-basic-demo',
-    templateUrl: 'table-basic-demo.html'
+  selector: 'table-basic-demo',
+  templateUrl: 'table-basic-demo.html',
 })
 export class TableBasicDemo implements OnInit {
-    products!: Product[];
+  event!: any;
 
-    constructor(private productService: ProductService) {}
+  constructor(private http: HttpClient) {}
 
-    ngOnInit() {
-        this.productService.getProductsMini().then((data) => {
-            this.products = data;
-        });
-    }
+  ngOnInit() {
+    this.getData();
+  }
+
+  getData() {
+    this.http.get('http://localhost:8888/api/event').subscribe((data) => {
+      console.log(data);
+      this.event = data;
+    });
+  }
 }
